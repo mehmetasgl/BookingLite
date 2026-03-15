@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rezervasyon Onayı</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+        .content {
+            padding: 30px;
+        }
+        .success-icon {
+            text-align: center;
+            font-size: 60px;
+            margin: 20px 0;
+        }
+        .reservation-details {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+        .detail-label {
+            font-weight: bold;
+            color: #666;
+        }
+        .detail-value {
+            color: #333;
+        }
+        .price-total {
+            background-color: #667eea;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 20px 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .footer {
+            background-color: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+        .button {
+            display: inline-block;
+            background-color: #667eea;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎉 Rezervasyonunuz Onaylandı!</h1>
+        </div>
+        
+        <div class="content">
+            <p>Merhaba <strong th:text="${customerName}">Müşteri</strong>,</p>
+            
+            <p>
+                <strong th:text="${hotelName}">Otel Adı</strong> otelindeki rezervasyonunuz başarıyla oluşturuldu!
+            </p>
+            
+            <div class="success-icon">✓</div>
+            
+            <div class="reservation-details">
+                <h3 style="margin-top: 0;">Rezervasyon Detayları</h3>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Rezervasyon No:</span>
+                    <span class="detail-value">#<span th:text="${reservationNumber}">12345</span></span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Otel:</span>
+                    <span class="detail-value" th:text="${hotelName}">Hotel Name</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Oda Tipi:</span>
+                    <span class="detail-value" th:text="${roomTypeName}">Room Type</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">📅 Check-in:</span>
+                    <span class="detail-value">
+                        <span th:text="${checkin}">25 Aralık 2024</span>
+                        (<span th:text="${checkinTime}">14:00</span>)
+                    </span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">📅 Check-out:</span>
+                    <span class="detail-value">
+                        <span th:text="${checkout}">27 Aralık 2024</span>
+                        (<span th:text="${checkoutTime}">12:00</span>)
+                    </span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">👥 Misafir:</span>
+                    <span class="detail-value">
+                        <span th:text="${guestsAdults}">2</span> Yetişkin
+                        <span th:if="${guestsChildren > 0}">
+                            , <span th:text="${guestsChildren}">0</span> Çocuk
+                        </span>
+                    </span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">📍 Adres:</span>
+                    <span class="detail-value" th:text="${hotelAddress}">Hotel Address</span>
+                </div>
+            </div>
+            
+            <div class="price-total">
+                Toplam: <span th:text="${totalPrice}">3000</span> <span th:text="${currency}">TL</span>
+            </div>
+            
+            <p style="text-align: center;">
+                <a href="#" class="button">Rezervasyonumu Görüntüle</a>
+            </p>
+            
+            <p style="color: #666; font-size: 14px;">
+                İyi tatiller dileriz! ☀️🏖️
+            </p>
+        </div>
+        
+        <div class="footer">
+            <p>Bu mail otomatik olarak gönderilmiştir.</p>
+            <p>
+                <strong>Booking Lite</strong><br>
+                İletişim: info@bookinglite.com
+            </p>
+        </div>
+    </div>
+</body>
+</html>

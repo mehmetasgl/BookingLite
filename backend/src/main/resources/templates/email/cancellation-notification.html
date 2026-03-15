@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Rezervasyon İptali</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .content {
+            padding: 30px;
+        }
+        .alert {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+            color: #721c24;
+        }
+        .detail-box {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚫 Rezervasyon İptal Edildi</h1>
+        </div>
+        
+        <div class="content">
+            <p>Merhaba <strong th:text="${recipientName}">Kullanıcı</strong>,</p>
+            
+            <div class="alert">
+                <strong>Rezervasyon #<span th:text="${reservationNumber}">12345</span></strong> iptal edilmiştir.
+            </div>
+            
+            <div class="detail-box">
+                <h3 style="margin-top: 0;">İptal Edilen Rezervasyon</h3>
+                
+                <p><strong>Otel:</strong> <span th:text="${hotelName}">Hotel Name</span></p>
+                <p><strong>Oda:</strong> <span th:text="${roomTypeName}">Room Type</span></p>
+                <p><strong>Check-in:</strong> <span th:text="${checkin}">25 Aralık 2024</span></p>
+                <p><strong>Check-out:</strong> <span th:text="${checkout}">27 Aralık 2024</span></p>
+                <p><strong>Tutar:</strong> <span th:text="${totalPrice}">3000</span> <span th:text="${currency}">TL</span></p>
+            </div>
+            
+            <div th:if="${isCustomer}" style="background-color: #d1ecf1; border: 1px solid #bee5eb; border-radius: 5px; padding: 15px; color: #0c5460;">
+                <p style="margin: 0;">İade işlemi 5-7 iş günü içinde tamamlanacaktır.</p>
+            </div>
+            
+            <p style="color: #666; margin-top: 20px;">
+                Sorularınız için bizimle iletişime geçebilirsiniz.
+            </p>
+        </div>
+        
+        <div style="background-color: #f8f9fa; padding: 20px; text-align: center; color: #666; font-size: 14px;">
+            <p>Booking Lite</p>
+            <p>info@bookinglite.com</p>
+        </div>
+    </div>
+</body>
+</html>

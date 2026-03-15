@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Yeni Rezervasyon</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .header {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .content {
+            padding: 30px;
+        }
+        .alert {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .detail-box {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .detail-row {
+            padding: 8px 0;
+        }
+        .label {
+            font-weight: bold;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔔 Yeni Rezervasyon!</h1>
+        </div>
+        
+        <div class="content">
+            <p>Merhaba <strong th:text="${partnerName}">Partner</strong>,</p>
+            
+            <div class="alert">
+                <strong th:text="${hotelName}">Otel</strong> için yeni bir rezervasyon aldınız!
+            </div>
+            
+            <div class="detail-box">
+                <h3 style="margin-top: 0;">Rezervasyon Bilgileri</h3>
+                
+                <div class="detail-row">
+                    <span class="label">Rezervasyon No:</span>
+                    #<span th:text="${reservationNumber}">12345</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="label">Oda Tipi:</span>
+                    <span th:text="${roomTypeName}">Room Type</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="label">Check-in:</span>
+                    <span th:text="${checkin}">25 Aralık 2024</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="label">Check-out:</span>
+                    <span th:text="${checkout}">27 Aralık 2024</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="label">Misafir Sayısı:</span>
+                    <span th:text="${guestsAdults}">2</span> Yetişkin
+                    <span th:if="${guestsChildren > 0}">
+                        , <span th:text="${guestsChildren}">0</span> Çocuk
+                    </span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="label">Toplam Tutar:</span>
+                    <strong><span th:text="${totalPrice}">3000</span> <span th:text="${currency}">TL</span></strong>
+                </div>
+            </div>
+            
+            <div class="detail-box">
+                <h3 style="margin-top: 0;">Müşteri Bilgileri</h3>
+                
+                <div class="detail-row">
+                    <span class="label">Ad Soyad:</span>
+                    <span th:text="${customerName}">Customer Name</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="label">Email:</span>
+                    <span th:text="${customerEmail}">customer@email.com</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="label">Telefon:</span>
+                    <span th:text="${customerPhone}">+90 555 123 4567</span>
+                </div>
+                
+                <div class="detail-row" th:if="${guestNotes}">
+                    <span class="label">Notlar:</span>
+                    <p th:text="${guestNotes}" style="margin: 5px 0;"></p>
+                </div>
+            </div>
+            
+            <p style="text-align: center; margin-top: 30px;">
+                <a href="#" style="display: inline-block; background-color: #11998e; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px;">
+                    Rezervasyonu Görüntüle
+                </a>
+            </p>
+        </div>
+        
+        <div style="background-color: #f8f9fa; padding: 20px; text-align: center; color: #666; font-size: 14px;">
+            <p>Booking Lite Partner Paneli</p>
+        </div>
+    </div>
+</body>
+</html>
